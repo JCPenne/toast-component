@@ -20,7 +20,10 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast message={message}></Toast>
+      <Toast
+        message={message}
+        variant={variant}
+      ></Toast>
 
       <form className={styles.controlsWrapper}>
         <div className={styles.row}>
