@@ -10,7 +10,7 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
-  const [toastVisibile, setToastVisible] = React.useState(false);
+  const [toastVisible, setToastVisible] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -26,9 +26,9 @@ function ToastPlayground() {
         />
         <h1>Toast Playground</h1>
       </header>
-      {toastVisibile && (
+      {toastVisible && (
         <Toast
-          toastVisible={setToastVisible}
+          visible={setToastVisible}
           message={message}
           variant={variant}
         ></Toast>
