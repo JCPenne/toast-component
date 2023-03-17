@@ -8,7 +8,7 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
   const [message, setMessage] = React.useState('');
-  const [variant, setVariant] = React.useState(''); // notice || warning || success || error
+  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
   return (
     <div className={styles.wrapper}>
       <header>
@@ -33,7 +33,7 @@ function ToastPlayground() {
               id='message'
               className={styles.messageInput}
               value={message}
-              onChange={e => setMessage(e.target.value)}
+              onChange={event => setMessage(event.target.value)}
             />
           </div>
         </div>
@@ -56,7 +56,7 @@ function ToastPlayground() {
                     id={id}
                     value={option}
                     checked={variant === option}
-                    onChange={e => setVariant(e.target.value)}
+                    onChange={event => setVariant(event.target.value)}
                   />
                   {option}
                 </label>
