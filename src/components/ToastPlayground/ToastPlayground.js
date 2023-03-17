@@ -26,12 +26,14 @@ function ToastPlayground() {
         />
         <h1>Toast Playground</h1>
       </header>
+
       {toastVisible && (
         <Toast
           visible={setToastVisible}
-          message={message}
           variant={variant}
-        ></Toast>
+        >
+          {message}
+        </Toast>
       )}
 
       <form
