@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
+import Toast from '../Toast/Toast';
 
 import styles from './ToastPlayground.module.css';
 
@@ -18,6 +19,8 @@ function ToastPlayground() {
         />
         <h1>Toast Playground</h1>
       </header>
+
+      <Toast message={message}></Toast>
 
       <form className={styles.controlsWrapper}>
         <div className={styles.row}>
