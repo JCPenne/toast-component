@@ -10,6 +10,13 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
+  const [toastVisibile, setToastVisible] = React.useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setToastVisible(true);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>
@@ -19,13 +26,18 @@ function ToastPlayground() {
         />
         <h1>Toast Playground</h1>
       </header>
+      {toastVisibile && (
+        <Toast
+          toastVisible={setToastVisible}
+          message={message}
+          variant={variant}
+        ></Toast>
+      )}
 
-      <Toast
-        message={message}
-        variant={variant}
-      ></Toast>
-
-      <form className={styles.controlsWrapper}>
+      <form
+        className={styles.controlsWrapper}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.row}>
           <label
             htmlFor='message'
@@ -75,7 +87,7 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button>Pop Toast!</Button>
+            <Button type='submit'>Pop Toast!</Button>
           </div>
         </div>
       </form>
