@@ -8,7 +8,12 @@ import styles from './ToastShelf.module.css';
 function ToastShelf() {
   const { slices } = React.useContext(ToastContext);
   return (
-    <ol className={styles.wrapper}>
+    <ol
+      className={styles.wrapper}
+      role='region'
+      aria-live='polite'
+      aria-label='Notification'
+    >
       {slices.map(slice => (
         <li
           className={styles.toastWrapper}
