@@ -7,15 +7,23 @@ import ToastShelf from '../ToastShelf/ToastShelf';
 
 import styles from './ToastPlayground.module.css';
 
+const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
+
 function ToastPlayground() {
-  const {
-    VARIANT_OPTIONS,
-    message,
-    setMessage,
-    variant,
-    setVariant,
-    handleSubmit,
-  } = React.useContext(ToastContext);
+  const { createSlice } = React.useContext(ToastContext);
+
+  const [message, setMessage] = React.useState('');
+  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    createSlice(message, variant);
+
+    setMessage('');
+    setVariant(VARIANT_OPTIONS[0]);
+  }
+
   return (
     <div className={styles.wrapper}>
       <header>

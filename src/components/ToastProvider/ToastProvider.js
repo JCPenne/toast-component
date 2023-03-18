@@ -2,17 +2,11 @@ import React from 'react';
 
 export const ToastContext = React.createContext();
 
-const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
-
 function ToastProvider({ children }) {
   const [slices, setSlices] = React.useState([]);
-  const [message, setMessage] = React.useState('');
-  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
 
-  const handleSubmit = React.useCallback(
-    event => {
-      event.preventDefault();
-
+  const createSlice = React.useCallback(
+    (message, variant) => {
       setSlices([
         ...slices,
         {
@@ -21,14 +15,11 @@ function ToastProvider({ children }) {
           variant,
         },
       ]);
-
-      setMessage('');
-      setVariant(VARIANT_OPTIONS[0]);
     },
-    [message, variant, slices]
+    [slices]
   );
 
-  const handleDismiss = React.useCallback(
+  const dismissToast = React.useCallback(
     sliceID => {
       const newSlices = slices.filter(slice => slice.id !== sliceID);
       setSlices(newSlices);
@@ -38,14 +29,8 @@ function ToastProvider({ children }) {
 
   const value = {
     slices,
-    setSlices,
-    message,
-    setMessage,
-    variant,
-    setVariant,
-    handleSubmit,
-    handleDismiss,
-    VARIANT_OPTIONS,
+    createSlice,
+    dismissToast,
   };
 
   return (

@@ -21,7 +21,7 @@ const ICONS_BY_VARIANT = {
 };
 
 function Toast({ id, children, variant }) {
-  const { handleDismiss } = React.useContext(ToastContext);
+  const { dismissToast } = React.useContext(ToastContext);
 
   const IconType = ICONS_BY_VARIANT[variant];
 
@@ -33,7 +33,7 @@ function Toast({ id, children, variant }) {
       <p className={styles.content}>{children}</p>
       <button
         className={styles.closeButton}
-        onClick={() => handleDismiss(id)}
+        onClick={() => dismissToast(id)}
       >
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
