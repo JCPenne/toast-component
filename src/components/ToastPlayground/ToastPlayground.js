@@ -8,17 +8,13 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
+  const [slices, setSlices] = React.useState([]);
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
-  const [slices, setSlices] = React.useState([]);
-
-  function handleDismiss(sliceID) {
-    const newSlices = slices.filter(slice => slice.id !== sliceID);
-    setSlices(newSlices);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
+
     setSlices([
       ...slices,
       {
@@ -27,8 +23,14 @@ function ToastPlayground() {
         variant,
       },
     ]);
+    
     setMessage('');
-    setVariant('notice');
+    setVariant(VARIANT_OPTIONS[0]);
+  }
+
+  function handleDismiss(sliceID) {
+    const newSlices = slices.filter(slice => slice.id !== sliceID);
+    setSlices(newSlices);
   }
 
   return (

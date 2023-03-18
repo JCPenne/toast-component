@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ children, variant, id, handleDismiss }) {
+function Toast({ id, children, variant, handleDismiss }) {
   const IconType = ICONS_BY_VARIANT[variant];
 
   return (
