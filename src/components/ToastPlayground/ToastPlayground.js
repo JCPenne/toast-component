@@ -26,7 +26,6 @@ function ToastPlayground() {
   }
 
   React.useEffect(() => {
-    console.log('useEffect fires');
     window.addEventListener('keydown', event => {
       event.code === 'Escape' && dismissAllToasts();
     });
