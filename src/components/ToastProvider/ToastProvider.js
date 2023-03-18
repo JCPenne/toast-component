@@ -27,10 +27,15 @@ function ToastProvider({ children }) {
     [slices]
   );
 
+  const dismissAllToasts = React.useCallback(() => {
+    setSlices([]);
+  }, [setSlices]);
+
   const value = {
     slices,
     createSlice,
     dismissToast,
+    dismissAllToasts,
   };
 
   return (
