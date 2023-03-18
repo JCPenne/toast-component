@@ -10,8 +10,7 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-  const { createSlice, dismissAllToasts } =
-    React.useContext(ToastContext);
+  const { createSlice } = React.useContext(ToastContext);
 
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]); // notice || warning || success || error
@@ -24,16 +23,6 @@ function ToastPlayground() {
     setMessage('');
     setVariant(VARIANT_OPTIONS[0]);
   }
-
-  React.useEffect(() => {
-    window.addEventListener('keydown', event => {
-      event.code === 'Escape' && dismissAllToasts();
-    });
-
-    return () => {
-      window.removeEventListener('keydown', () => {});
-    };
-  }, [dismissAllToasts]);
 
   return (
     <div className={styles.wrapper}>

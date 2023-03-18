@@ -27,15 +27,20 @@ function ToastProvider({ children }) {
     [slices]
   );
 
-  const dismissAllToasts = React.useCallback(() => {
-    setSlices([]);
-  }, [setSlices]);
+  React.useEffect(() => {
+    window.addEventListener('keydown', event => {
+      event.code === 'Escape' && setSlices([]);
+    });
+
+    return () => {
+      window.removeEventListener('keydown', () => {});
+    };
+  }, []);
 
   const value = {
     slices,
     createSlice,
     dismissToast,
-    dismissAllToasts,
   };
 
   return (
