@@ -30,12 +30,12 @@ function Toast({ id, children, variant }) {
       <div className={styles.iconContainer}>
         <IconType size={24} />
       </div>
-      <VisuallyHidden>{`${variant} -`}</VisuallyHidden>
+      <VisuallyHidden>{variant} - </VisuallyHidden>
       <p className={styles.content}>{children}</p>
       <button
         className={styles.closeButton}
         onClick={() => dismissToast(id)}
-        aria-label={`${variant} message`}
+        aria-label='Dismiss Message'
         aria-live='off'
       >
         <X size={24} />
